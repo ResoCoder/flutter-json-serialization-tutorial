@@ -21,10 +21,14 @@ Settings _$SettingsFromJson(Map<String, dynamic> json) {
 class _$SettingsTearOff {
   const _$SettingsTearOff();
 
-  _Settings call({required User user, required bool isPremium}) {
+  _Settings call(
+      {required User user,
+      required bool isPremium,
+      @ColorConverter() required List<Color> themeColors}) {
     return _Settings(
       user: user,
       isPremium: isPremium,
+      themeColors: themeColors,
     );
   }
 
@@ -40,6 +44,8 @@ const $Settings = _$SettingsTearOff();
 mixin _$Settings {
   User get user => throw _privateConstructorUsedError;
   bool get isPremium => throw _privateConstructorUsedError;
+  @ColorConverter()
+  List<Color> get themeColors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +57,8 @@ mixin _$Settings {
 abstract class $SettingsCopyWith<$Res> {
   factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) =
       _$SettingsCopyWithImpl<$Res>;
-  $Res call({User user, bool isPremium});
+  $Res call(
+      {User user, bool isPremium, @ColorConverter() List<Color> themeColors});
 
   $UserCopyWith<$Res> get user;
 }
@@ -68,6 +75,7 @@ class _$SettingsCopyWithImpl<$Res> implements $SettingsCopyWith<$Res> {
   $Res call({
     Object? user = freezed,
     Object? isPremium = freezed,
+    Object? themeColors = freezed,
   }) {
     return _then(_value.copyWith(
       user: user == freezed
@@ -78,6 +86,10 @@ class _$SettingsCopyWithImpl<$Res> implements $SettingsCopyWith<$Res> {
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
               as bool,
+      themeColors: themeColors == freezed
+          ? _value.themeColors
+          : themeColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
     ));
   }
 
@@ -94,7 +106,8 @@ abstract class _$SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
   factory _$SettingsCopyWith(_Settings value, $Res Function(_Settings) then) =
       __$SettingsCopyWithImpl<$Res>;
   @override
-  $Res call({User user, bool isPremium});
+  $Res call(
+      {User user, bool isPremium, @ColorConverter() List<Color> themeColors});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -113,6 +126,7 @@ class __$SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? isPremium = freezed,
+    Object? themeColors = freezed,
   }) {
     return _then(_Settings(
       user: user == freezed
@@ -123,6 +137,10 @@ class __$SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
               as bool,
+      themeColors: themeColors == freezed
+          ? _value.themeColors
+          : themeColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
     ));
   }
 }
@@ -131,7 +149,11 @@ class __$SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_Settings extends _Settings {
-  const _$_Settings({required this.user, required this.isPremium}) : super._();
+  const _$_Settings(
+      {required this.user,
+      required this.isPremium,
+      @ColorConverter() required this.themeColors})
+      : super._();
 
   factory _$_Settings.fromJson(Map<String, dynamic> json) =>
       _$$_SettingsFromJson(json);
@@ -140,10 +162,13 @@ class _$_Settings extends _Settings {
   final User user;
   @override
   final bool isPremium;
+  @override
+  @ColorConverter()
+  final List<Color> themeColors;
 
   @override
   String toString() {
-    return 'Settings(user: $user, isPremium: $isPremium)';
+    return 'Settings(user: $user, isPremium: $isPremium, themeColors: $themeColors)';
   }
 
   @override
@@ -153,11 +178,14 @@ class _$_Settings extends _Settings {
             other is _Settings &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isPremium, isPremium) ||
-                other.isPremium == isPremium));
+                other.isPremium == isPremium) &&
+            const DeepCollectionEquality()
+                .equals(other.themeColors, themeColors));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isPremium);
+  int get hashCode => Object.hash(runtimeType, user, isPremium,
+      const DeepCollectionEquality().hash(themeColors));
 
   @JsonKey(ignore: true)
   @override
@@ -171,8 +199,10 @@ class _$_Settings extends _Settings {
 }
 
 abstract class _Settings extends Settings {
-  const factory _Settings({required User user, required bool isPremium}) =
-      _$_Settings;
+  const factory _Settings(
+      {required User user,
+      required bool isPremium,
+      @ColorConverter() required List<Color> themeColors}) = _$_Settings;
   const _Settings._() : super._();
 
   factory _Settings.fromJson(Map<String, dynamic> json) = _$_Settings.fromJson;
@@ -181,6 +211,9 @@ abstract class _Settings extends Settings {
   User get user;
   @override
   bool get isPremium;
+  @override
+  @ColorConverter()
+  List<Color> get themeColors;
   @override
   @JsonKey(ignore: true)
   _$SettingsCopyWith<_Settings> get copyWith =>

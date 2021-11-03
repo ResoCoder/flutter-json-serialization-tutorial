@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_json_serialization_tutorial/data/settings.dart';
+import 'package:flutter_json_serialization_tutorial/data/user.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -12,8 +14,21 @@ class HomePage extends StatelessWidget {
     "theme-colors": [4282339765, 4278238420]
   };
 
-  void convertToJson() {}
-  void convertFromJson() {}
+  final settings = const Settings(
+      user: User(email: 'myemail@email.com', phoneNumber: 324234234),
+      isPremium: false,
+      themeColors: [Colors.cyanAccent, Colors.indigo]);
+
+  void convertToJson() {
+    final json = settings.toJson();
+    print('To JSON: $json');
+  }
+
+  void convertFromJson() {
+    final settings = Settings.fromJson(settingsData);
+    print('From JSON: $settings');
+  }
+
   void convertToDatabaseJson() {}
 
   @override
