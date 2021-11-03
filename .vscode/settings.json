@@ -2,5 +2,21 @@
   "editor.fontSize": 18,
   "window.zoomLevel": 0,
   "debug.console.fontSize": 18,
-  "terminal.integrated.fontSize": 18
+  "terminal.integrated.fontSize": 18,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    ".vscode": true,
+    "/node_modules": true,
+    "/vendor": true,
+    "build/": true,
+    "**/*.freezed.dart": false,
+    "**/*.g.dart": false,
+    "**/*.gitkeep": false
+  },
+  "explorerExclude.backup": null
 }
