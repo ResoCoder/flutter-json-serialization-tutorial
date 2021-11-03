@@ -29,7 +29,10 @@ class HomePage extends StatelessWidget {
     print('From JSON: $settings');
   }
 
-  void convertToDatabaseJson() {}
+  void convertToDatabaseJson() {
+    final json = settings.toDatabaseJson();
+    print('To Database JSON $json');
+  }
 
   @override
   Widget build(BuildContext context) {

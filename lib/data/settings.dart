@@ -17,6 +17,13 @@ class Settings with _$Settings {
 
   factory Settings.fromJson(Map<String, dynamic> json) =>
       _$SettingsFromJson(json);
+
+  Map<String, dynamic> toDatabaseJson() {
+    final json = toJson();
+    json['timestamp'] = DateTime.now();
+
+    return json;
+  }
 }
 
 class ColorConverter implements JsonConverter<Color, int> {
